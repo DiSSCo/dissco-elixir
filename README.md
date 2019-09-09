@@ -13,6 +13,10 @@ A place to gather items.
 
 ## Current Technical Landscape 
 
+* The fate of a small marine worm
+
+![holorchis castex](holorchis-castex.png)
+
 
 https://data-blog.gbif.org/post/gbif-molecular-data/
 https://www.gbif.org/faq?question=how-can-i-publish-molecular-data-to-gbif
