@@ -45,7 +45,7 @@ Fruthermore, taxonomic identificaiton is a slow process. So researchers are look
 
 In essence we are dealing with two different workflows from two different domains ("traditional" collection and taxonomic research versus newer DNA sequencing methods). 
 
-<img src="dna-taxonomy-link-hubert-hanner.png" alt="Conceptual Link Between DNA barcoding and taxonomy" align="centrer" width="440" height="300"/>
+<img src="dna-taxonomy-link-hubert-hanner.png" alt="Conceptual Link Between DNA barcoding and taxonomy" align="centrer" width="730" height="380"/>
 
 *[Figure]([http://doi.org10.1515/dna-2015-0006) by Hubert, Nicolas, and Robert Hanner.*
 	
