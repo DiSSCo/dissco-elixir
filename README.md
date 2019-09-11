@@ -63,12 +63,15 @@ Is it then just about data linkage?  The above was published in 2015. Are some o
 GenBank (Clark et al. 2015). Percentages represent the percent of the total in that category.
 <img src="taxonomic-gap-devine.png" alt="Taxonomic Gap Analysis" align="centrer" width="590" height="220"/>
 
-It is also not just about finding the data. A [2019 assessment](https://doi.org/10.1371/journal.pone.0217084) of the accuracy and reliability of [BOLD](http://www.boldsystems.org/) and [GenBank](https://www.ncbi.nlm.nih.gov/genbank/) highlights issues of accuracy and reliability:
+It is also not just about finding the data. A [2019 assessment](https://doi.org/10.1371/journal.pone.0217084) of [BOLD](http://www.boldsystems.org/) and [GenBank](https://www.ncbi.nlm.nih.gov/genbank/) highlights issues of accuracy and reliability:
 
 > To achieve this, 1) curated reference materials for plants, macro-fungi and insects were obtained from national collections, 2) relevant barcode sequences (rbcL, matK, trnH-psbA, ITS and COI) from these reference samples were generated and used for searching against both databases, and 3) optimal search parameters were determined that ensure the best match to the known species in either database. While GenBank outperformed BOLD for species-level identification of insect taxa (53% and 35%, respectively), both databases performed comparably for plants and macro-fungi (~81% and ~57%, respectively). Results illustrated that using a multi-locus barcode approach increased identification success. This study outlines the utility of the BLAST search tool in GenBank and the BOLD identification engine for taxonomic identifications and identifies some precautions needed when using public sequence repositories in applied scientific disciplines.
 > 
 
-So the themes for the workshop: 
+# Themes
+Above issues can be categorised in the following themes: 
+
+ 
 
 1. Data sources and services 
 2. Service interoperability  
