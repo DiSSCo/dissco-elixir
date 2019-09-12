@@ -98,6 +98,7 @@ DNA Databank of Japan (DDBJ)
 - GenBank the NCBI
 - European Nucleotide Archive (ENA) 
 - DNA Databank of Japan (DDBJ)
+-  International Nucleotide Sequence Database Collaboration (INSDC; http://www.insdc.org/)
 - [Biosamples] (https://www.ebi.ac.uk/biosamples/)
 - [Biobank catalog](https://www.bbmri.nl/node/23)
 - [Europmc](http://europepmc.org/)
@@ -110,59 +111,118 @@ DNA Databank of Japan (DDBJ)
 >The individual biorepository pages in BioCollections can serve as a start site for users specifically interested in the breakdown of sequenced vouchers at a specific institution. For example, Smithsonian Institution, National Museum of Natural History shares specimens and DNA samples with collaborators worldwide. As a result, DNA sequence data is submitted to Genbank, ENA and DDBJ by a large number of submitters and are often not formatted correctly and therefore are not linked to BioCollections Database. USNM (National Museum, >29 000 total records) and US (National Herbarium, > 16 000 total records) notations represent a large number of sequence records and are part of an important collaborative effort.
 
 
-### Example data integration service 
+## Example data integration service 
 
-Global Biotic Interactions (GloBI) provides open access to finding species interaction data (e.g., predator-prey, pollinator-plant, pathogen-host, parasite-host) by combining existing open datasets using open source software.
+###Global Biotic Interactions (GloBI) and Entrez 
 
-This is a R package. 
+[Global Biotic Interactions](https://www.globalbioticinteractions.org/) (GloBI) provides open access to finding species interaction data (e.g., predator-prey, pollinator-plant, pathogen-host, parasite-host) by combining existing open datasets using open source software. And [Entrez](https://www.ncbi.nlm.nih.gov/search/) (from NCBI) is a molecular biology database system that provides integrated access to nucleotide and protein sequence data,
 
-```
-aves_crustacea_northern_hemisphere <- get_interactions_by_taxa( sourcetaxon = "Aves", targettaxon = "Crustacea", bbox=c(-180, 0, 180, 90 ))
-head(aves_crustacea_northern_hemisphere)
-  source_taxon_external_id    source_taxon_name
-1   FBC:SLB:SpecCode:73756 Puffinus auricularis
-2   FBC:SLB:SpecCode:73756 Puffinus auricularis
-3   FBC:SLB:SpecCode:73756 Puffinus auricularis
-4             GBIF:5232446      Branta bernicla
-5             GBIF:5232446      Branta bernicla
-6             GBIF:5232446      Branta bernicla
-                                                                source_taxon_path
-1         Aves | Ciconiiformes | Procellariidae | Puffinus | Puffinus auricularis
-2         Aves | Ciconiiformes | Procellariidae | Puffinus | Puffinus auricularis
-3         Aves | Ciconiiformes | Procellariidae | Puffinus | Puffinus auricularis
-4 Animalia | Chordata | Aves | Anseriformes | Anatidae | Branta | Branta bernicla
-5 Animalia | Chordata | Aves | Anseriformes | Anatidae | Branta | Branta bernicla
-6 Animalia | Chordata | Aves | Anseriformes | Anatidae | Branta | Branta bernicla
-  source_specimen_life_stage interaction_type target_taxon_external_id
-1                         NA             eats           EOL_V2:2604866
-2                         NA             eats              EOL_V2:1183
-3                         NA             eats           EOL_V2:2598871
-4                         NA          preysOn                 EOL:1243
-5                         NA          preysOn               ITIS:93295
-6                         NA          preysOn                EOL:15195
-  target_taxon_name
-1         Brachyura
-2          Decapoda
-3         Crustacea
-4           Cumacea
-5        Gammaridea
-6       Paracerceis
-                                                                                                                                        target_taxon_path
-1 Animalia | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Crustacea | Malacostraca | Eumalacostraca | Eucarida | Decapoda | Pleocyemata | Brachyura
-2                                                                                                         Animalia | Arthropoda | Malacostraca | Decapoda
-3                                                                                 Animalia | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Crustacea
-4                                                                                                          Animalia | Arthropoda | Malacostraca | Cumacea
-5           Animalia | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Crustacea | Malacostraca | Eumalacostraca | Peracarida | Amphipoda | Gammaridea
-6                                                         Animalia | Arthropoda | Malacostraca | Isopoda | Sphaeromatoidea | Sphaeromatidae | Paracerceis
-  target_specimen_life_stage latitude longitude study_citation
-1                         NA       NA        NA             NA
-2                         NA       NA        NA             NA
-3                         NA       NA        NA             NA
-4                         NA       NA        NA             NA
-5                         NA       NA        NA             NA
-6                         NA       NA        NA             NA
+I am using two R packages here: [rglobi](https://cran.r-project.org/web/packages/rglobi/) and [rentrez](https://cran.r-project.org/web/packages/rentrez/) from CRAN. 
+
+A simple example that hows species interactions and then links various items in the NCBI database. I am interested in (Spirometra erinaceieuropaei)[https://en.wikipedia.org/wiki/Spirometra_erinaceieuropaei] which is a tape worm. 
+
 
 ```
+library(rglobi)
+sp <- get_interactions(taxon = "Spirometra erinaceieuropaei", interaction.type = "parasiteOf")
+
+```
+
+Looking at the data frame, I can see that there is a `target_taxon_name`. 
+
+```
+> str(sp)
+'data.frame':	178 obs. of  13 variables:
+ $ source_taxon_external_id  : chr  "EOL:4968441" "EOL:4968441" "EOL:4968441" "EOL:4968441" ...
+ $ source_taxon_name         : chr  "Spirometra erinaceieuropaei" "Spirometra erinaceieuropaei" "Spirometra erinaceieuropaei" "Spirometra erinaceieuropaei" ...
+ $ source_taxon_path         : chr  "Cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Platyhelminthes | Cestoda | E"| __truncated__ "Cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Platyhelminthes | Cestoda | E"| __truncated__ "Cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Platyhelminthes | Cestoda | E"| __truncated__ "Cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Platyhelminthes | Cestoda | E"| __truncated__ ...
+ $ source_specimen_life_stage: logi  NA NA NA NA NA NA ...
+ $ interaction_type          : chr  "parasiteOf" "parasiteOf" "parasiteOf" "parasiteOf" ...
+ $ target_taxon_external_id  : chr  "no:match" "EOL:1178681" "EOL:311234" "EOL:331125" ...
+ $ target_taxon_name         : chr  "DOG" "Erinaceus amurensis" "Litoria aurea" ...
+ $ study_source_citation     : logi  NA NA NA NA NA NA ...
+ 
+```
+Using that I can find the target taxon name (first ten) 
+
+```
+
+sp$target_taxon_name[1:10]
+ [1] "DOG"                      "Erinaceus amurensis"     
+ [3] "Litoria aurea"            "Rana tigrina"            
+ [5] "Rana cancrivora"          "Cyclops affinis"         
+ [7] "Cyclops phaleratus"       "Mesocyclops aspericornis"
+ [9] "Litoria caerulea"         "Mustela putorius" 
+```
+
+ Now using the rentrez API, now I can go to NCBI. 
+
+```
+all_the_links <- entrez_link(dbfrom='taxonomy', id=99802, db='all')
+```
+
+And find all the links 
+
+```
+all_the_links$links$taxonomy_gene
+ [1] "6446594" "6446593" "6446592" "6446591" "6446590" "6446589" "6446588"
+ [8] "6446587" "6446586" "6446585" "6446584" "6446583" "6446582" "6446581"
+[15] "6446580" "6446579" "6446578" "6446577" "6446576" "6446575" "6446574"
+[22] "6446573" "6446572" "6446571" "6446570" "6446569" "6446568" "6446567"
+[29] "6446566" "6446565" "6446564" "6446563" "6446562" "6446561" "6446560"
+[36] "6446559"
+```
+And resolve it via [https://identifiers.org/ncbigene:6446593](https://identifiers.org/ncbigene:6446593).
+
+
+  
+ 
+###BioThingsAPI 
+
+[Cross-linking BioThings APIs through JSON-LD to facilitate knowledge exploration](https://doi.org/10.1186/s12859-018-2041-5)
+
+This API uses [Identifiers.org](Identifiers.org) service to cross link with JSON-LD Here's the [json context](http://myvariant.info/context/context.json). 
+
+```
+{
+    "@context": {
+        "cadd.gene.gene_id": "http://identifiers.org/ensembl.gene/",
+        "cadd.gene.genename": "http://identifiers.org/hgnc.symbol/",
+        "cadd.gene.ccds_id": "http://identifiers.org/ccds/",
+        "clinvar.uniprot": "http://identifiers.org/uniprot/",
+        "clinvar.rsid": "http://identifiers.org/dbsnp/",
+        "clinvar.rcv.accession": "http://identifiers.org/clinvar/",
+        "evs.gene.accession": "http://identifiers.org/refseq/",
+        "grasp.rsid": "http://identifiers.org/dbsnp/",
+        "grasp.publication.snpid": "http://identifiers.org/dbsnp/",
+        "gwassnps.rsid": "http://identifiers.org/dbsnp/",
+        "gwassnps.genename": "http://identifiers.org/hgnc.symbol/",
+        "gwassnps.pubmed": "http://identifiers.org/pubmed/",
+        "mutdb.rsid": "http://identifiers.org/dbsnp/",
+        "snpeff.lof.genename": "http://identifiers.org/hgnc.symbol/",
+        "snpeff.ann.genename": "http://identifiers.org/hgnc.symbol/",
+        "snpeff.nmd.genename": "http://identifiers.org/hgnc.symbol/"
+    }
+}
+```
+Steps: 
+
+Input: 
+
+1. Variant HGVS ID (e.g. chr6:g.26093141G>A)
+2. Retrieve Entrez Gene ID(s) set1g related to HGVS ID(s)
+3. Retrieve Wikipathways ID(s) set1p in which Entrez Gene ID(s) set1g are involved
+4. Retrieve Other Entrez Gene ID(s) set2g which are included in Wikipathways ID(s) set1p
+5. Retrieve Uniprot ID(s) set2u which correspond to Entrez Gene ID(s) set2g
+Retrieve Drug Inchi Key(s) set1d which target Uniprot ID(s) set2u
+
+Output: Available drugs targetting genes/pathways related to the input HGVS ID
+
+>For example, a user who would like to fetch the linked OMIM [15] disease IDs for a specific variant in MyVariant.info must first consult the JSON data schema, which would define the JSON field path of the OMIM ID (“clinvar.rcv.conditions.identifiers.omim”). Moreover, as services evolve, API developers often introduce incompatible changes in data structure between different versions, which would require API users to update their client code in order to properly handle the new JSON schema.
+...
+
+
+
 
 
 # Standards 
@@ -198,6 +258,8 @@ https://www.ebi.ac.uk/ena/submit/taxonomy
 
 >"Specimens held in natural history collections represent a chronological archive of life on Earth and may, in many cases, be the only available source of data on historical disease patterns. It is possible to extract information on past disease rates by studying trace fossils (indirect fossilized evidence of an organism's presence or activity, including coprolites or feces), sequencing ancient DNA of parasites, and examining sediment samples, mummified remains, study skins (preserved animal skins prepared by taxidermy for research purposes), liquid‐preserved hosts, and hosts preserved in amber. Such use of natural history collections could expand scientific understanding of parasite responses to environmental change across deep time (that is, over the past several centuries), facilitating the development of baselines for managing contemporary wildlife disease."
 >
+
+- [FuzzyID2: A software package for large data set species identification via barcoding and metabarcoding using hidden Markov models and fuzzy set methods](https://doi.org/10.1111/1755-0998.12738)
 
 - [Entomological Collections in the Age of Big Data](https://www.annualreviews.org/doi/full/10.1146/annurev-ento-031616-035536)
 
