@@ -38,7 +38,7 @@ Is it a plant or a wasp?
 >Agathis montana is a valid species name in both the botanical and zoological codes. In order to resolve this ambiguity, sequence entries from these two species will be annotated with the binomial name and the taxonomic authority, i.e.:/organism="Agathis montana de Laub. 1969" (for the conifer)/organism="Agathis montana Shest. 1932" (for the wasp)"
 
 
-Taxonomic research is still one of the most important aspects of species identification. Museum and herbarium specimens are important source for such identification and individual level trait measurement through time. We now have billions of specimens available but not all of them are digitized.  A vast amount of trait data are available but linking and integrating remain a [challenge](https://doi.org/10.1101/328302). 
+Taxonomic research is still one of the most important aspects of species identification. Museum and herbarium specimens are important source for such identification process and also for individual level trait measurement through time. We now have billions of specimens available but not all of them are digitized. A vast amount of trait data are available but linking and integrating remain a [challenge](https://doi.org/10.1101/328302). 
 
 Furthermore, taxonomic identificaiton is a slow process. On the other hand DNA sequencing (some methods can be expensive) is one of the fastest ways of gathering evidence for taxonomic decision -- for example incorporating DNA evidence into [taxonomic decisions](https://doi.org/10.13156/arac.2018.18.2.94) 
 [via DNA barcodes](https://dx.doi.org/10.3897%2Fzookeys.757.24453). But this approach is also prone to errors -- several papers (for example ([here](https://doi.org/10.1007/s13225-019-00428-3) and [here](https://doi.org/10.1046/j.1469-8137.2003.00894.x)) highlighted errors in sequence based identification. Researchers are also looking into multiple sources: morphological, ecological and molecular and [integrated](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2657783/) approaches. 
@@ -46,7 +46,7 @@ Furthermore, taxonomic identificaiton is a slow process. On the other hand DNA s
 
 In essence we are dealing with heterogeneous data sources, formats, different workflows, standards from different domains (for example "traditional" collection and taxonomy based workflow versus newer DNA sequencing methods). 
 
-<img src="dna-taxonomy-link-hubert-hanner.png" alt="Conceptual Link Between DNA barcoding and taxonomy" align="centrer" width="730" height="380"/>
+<img src="dna-taxonomy-link-hubert-hanner.png" alt="Conceptual Link Between DNA barcoding and taxonomy" align="centrer" width="770" height="397"/>
 
 *[Figure]([http://doi.org10.1515/dna-2015-0006) by Hubert, Nicolas, and Robert Hanner.*
 	
@@ -89,16 +89,14 @@ The (digital) fate of a small marine worm (based on the above knowledge graph).
 
 ![holorchis castex](holorchis-castex.png)
 
-GenBank the NCBI
-European Nucleotide Archive (ENA) 
-DNA Databank of Japan (DDBJ)
+
 
 ## Service Landscape 
 
 - GenBank the NCBI
 - European Nucleotide Archive (ENA) 
 - DNA Databank of Japan (DDBJ)
--  International Nucleotide Sequence Database Collaboration (INSDC; http://www.insdc.org/)
+-  [International Nucleotide Sequence Database Collaboration](http://www.insdc.org/)
 - [Biosamples] (https://www.ebi.ac.uk/biosamples/)
 - [Biobank catalog](https://www.bbmri.nl/node/23)
 - [Europmc](http://europepmc.org/)
@@ -113,13 +111,13 @@ DNA Databank of Japan (DDBJ)
 
 ## Example data integration service 
 
-###Global Biotic Interactions (GloBI) and Entrez 
+### Global Biotic Interactions (GloBI) and Entrez 
 
 [Global Biotic Interactions](https://www.globalbioticinteractions.org/) (GloBI) provides open access to finding species interaction data (e.g., predator-prey, pollinator-plant, pathogen-host, parasite-host) by combining existing open datasets using open source software. And [Entrez](https://www.ncbi.nlm.nih.gov/search/) (from NCBI) is a molecular biology database system that provides integrated access to nucleotide and protein sequence data,
 
 I am using two R packages here: [rglobi](https://cran.r-project.org/web/packages/rglobi/) and [rentrez](https://cran.r-project.org/web/packages/rentrez/) from CRAN. 
 
-A simple example that hows species interactions and then links various items in the NCBI database. I am interested in (Spirometra erinaceieuropaei)[https://en.wikipedia.org/wiki/Spirometra_erinaceieuropaei] which is a tape worm. 
+A simple example that shows how species interacts and then links various items in the NCBI database. I am interested in [Spirometra erinaceieuropaei]([https://en.wikipedia.org/wiki/Spirometra_erinaceieuropaei) which is a tape worm. 
 
 
 ```
@@ -155,13 +153,13 @@ sp$target_taxon_name[1:10]
  [9] "Litoria caerulea"         "Mustela putorius" 
 ```
 
- Now using the rentrez API, now I can go to NCBI. 
+ Now using the rentrez API, I can go to NCBI. 
 
 ```
 all_the_links <- entrez_link(dbfrom='taxonomy', id=99802, db='all')
 ```
 
-And find all the links 
+And find all these links 
 
 ```
 all_the_links$links$taxonomy_gene
@@ -175,9 +173,8 @@ all_the_links$links$taxonomy_gene
 And resolve it via [https://identifiers.org/ncbigene:6446593](https://identifiers.org/ncbigene:6446593).
 
 
-  
- 
-###BioThingsAPI 
+   
+### BioThingsAPI 
 
 [Cross-linking BioThings APIs through JSON-LD to facilitate knowledge exploration](https://doi.org/10.1186/s12859-018-2041-5)
 
@@ -224,12 +221,11 @@ Output: Available drugs targetting genes/pathways related to the input HGVS ID
 
 
 
-
 # Standards 
 
 1. Darwin Core 
 2. [The Trouble with Triplets in Biodiversity Informatics: A Data-Driven Case against Current Identifier Practices, 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4254916/)
-[GGBN Data Standard](https://wiki.ggbn.org/ggbn/GGBN_Data_Standard) 
+3. [GGBN Data Standard](https://wiki.ggbn.org/ggbn/GGBN_Data_Standard) 
 3. [Bioschema](https://bioschemas.org/) 
 4. [MOD-CO](https://academic.oup.com/database/article/doi/10.1093/database/baz002/53039720)
 
@@ -237,12 +233,14 @@ Output: Available drugs targetting genes/pathways related to the input HGVS ID
 https://academic.oup.com/database/article/doi/10.1093/database/baz002/5303972
 
 
-
 # Workflow 
+- From field collection event to specimen accession and long term storage 
 - Researchers out in the field
 - Institution (museum collection managers) 
+- Usually specimens are not collected with the primary intent of DNA analysis
 
-[Species delimitation in the morphologically conserved Coecobrya (Collembola: Entomobryidae): A case study integrating morphology and molecular traits to advance current taxonomy](https://onlinelibrary.wiley.com/doi/full/10.1111/zsc.12279) - has a good example of workflow ( species hypothesis H0 to 
+[Species delimitation in the morphologically conserved Coecobrya (Collembola: Entomobryidae): A case study integrating morphology and molecular traits to advance current taxonomy](https://onlinelibrary.wiley.com/doi/full/10.1111/zsc.12279) - has a good example of workflow 
+
 >For Collembola, morphological and molecular characters are the most frequently used; other types of data, such as ecology, reproductive compatibility, behaviour, cytogenetics, cuticular compounds, enzymes, whole genome scans, can provide complementary evidence. Multiple types of data can be reconciled under the unified species concept GLC (de Queiroz, 2007). The operational workflow for Collembola can be modified from Yeates et al.'s “iterative taxonomy” (2011), continuously testing species hypotheses with new sources of data
 
 https://www.ebi.ac.uk/ena/submit/taxonomy
@@ -273,3 +271,6 @@ The present study has three main goals: (a) to provide a DNA barcode library for
 
 - [Using taxonomic consistency with semi‐automated data pre‐processing for high quality DNA barcodes](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.12824)
 
+- [Collections-based research in the genomic era](https://doi.org/10.1111/bij.12721)
+
+- [Embracing heterogeneity: coalescing the Tree of Life and the future of phylogenomics](https://www.ncbi.nlm.nih.gov/pubmed/30783571)
