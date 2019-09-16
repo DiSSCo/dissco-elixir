@@ -16,11 +16,9 @@ Organised by [DiSSCo](https://www.dissco.eu/) and [ELIXIR](https://elixir-europe
 
 ### What's in a name 
 
-<<<<<<< HEAD
+
 This example uses the [taxize R package](https://ropensci.org/tutorials/taxize_tutorial/).
-=======
-This example uses the [taxize R package](Using taxize R package).
->>>>>>> ba8f10dbaaa46d008f13abac3517c4ce2eab803d
+
 
 ```
 > get_uid(c("Agathis Montana"))
