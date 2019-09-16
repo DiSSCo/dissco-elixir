@@ -16,6 +16,7 @@ Organised by [DiSSCo](https://www.dissco.eu/) and [ELIXIR](https://elixir-europe
 
 ### What's in a name 
 
+This example uses the [taxize R package](Using taxize R package).
 
 ```
 > get_uid(c("Agathis Montana"))
@@ -35,7 +36,7 @@ Is it a plant or a wasp?
 
 [https://www.ebi.ac.uk/ena/data/view/Taxon:60852](https://www.ebi.ac.uk/ena/data/view/Taxon:60852)
 
->Agathis montana is a valid species name in both the botanical and zoological codes. In order to resolve this ambiguity, sequence entries from these two species will be annotated with the binomial name and the taxonomic authority, i.e.:/organism="Agathis montana de Laub. 1969" (for the conifer)/organism="Agathis montana Shest. 1932" (for the wasp)"
+>Agathis montana is a valid species name in both the botanical and zoological codes. In order to resolve this ambiguity, sequence entries from these two species will be annotated with the binomial name and the taxonomic authority, i.e.:/organism="Agathis montana de Laub. 1969" (for the conifer)/organism="Agathis montana Shest. 1932" (for the wasp)
 
 
 Taxonomic research is still one of the most important aspects of species identification. Museum and herbarium specimens are important source for such identification process and also for individual level trait measurement through time. We now have billions of specimens available but not all of them are digitized. A vast amount of trait data are available but linking and integrating remain a [challenge](https://doi.org/10.1101/328302). 
@@ -48,7 +49,7 @@ In essence we are dealing with heterogeneous data sources, formats, different wo
 
 <img src="dna-taxonomy-link-hubert-hanner.png" alt="Conceptual Link Between DNA barcoding and taxonomy" align="centrer" width="770" height="397"/>
 
-*[Figure]([http://doi.org10.1515/dna-2015-0006) by Hubert, Nicolas, and Robert Hanner.*
+[Figure]([http://doi.org/10.1515/dna-2015-0006) by Hubert, Nicolas, and Robert Hanner.
 	
 
 This [2015 publication](https://doi.org/10.1093/nar/gku1127) highlights various aspect of data storage, workflow, institutional involvement and most importantly FAIR aspect of data life cycle. 
@@ -97,13 +98,13 @@ The (digital) fate of a small marine worm (based on the above knowledge graph).
 - European Nucleotide Archive (ENA) 
 - DNA Databank of Japan (DDBJ)
 -  [International Nucleotide Sequence Database Collaboration](http://www.insdc.org/)
-- [Biosamples] (https://www.ebi.ac.uk/biosamples/)
+- [Biosamples](https://www.ebi.ac.uk/biosamples/)
 - [Biobank catalog](https://www.bbmri.nl/node/23)
 - [Europmc](http://europepmc.org/)
 - [Identifiers.org](https://identifiers.org/)
-- GBIF-API 
+- [Molecular data in GBIF](https://data-blog.gbif.org/post/gbif-molecular-data/)
 
-[BioCollection database overivew](https://academic.oup.com/database/article/doi/10.1093/database/bay006/4904552)
+[BioCollection database overivew](https://doi.org/10.1093/database/bay006)
 
 
 >The individual biorepository pages in BioCollections can serve as a start site for users specifically interested in the breakdown of sequenced vouchers at a specific institution. For example, Smithsonian Institution, National Museum of Natural History shares specimens and DNA samples with collaborators worldwide. As a result, DNA sequence data is submitted to Genbank, ENA and DDBJ by a large number of submitters and are often not formatted correctly and therefore are not linked to BioCollections Database. USNM (National Museum, >29 000 total records) and US (National Herbarium, > 16 000 total records) notations represent a large number of sequence records and are part of an important collaborative effort.
@@ -227,29 +228,36 @@ Output: Available drugs targetting genes/pathways related to the input HGVS ID
 2. [The Trouble with Triplets in Biodiversity Informatics: A Data-Driven Case against Current Identifier Practices, 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4254916/)
 3. [GGBN Data Standard](https://wiki.ggbn.org/ggbn/GGBN_Data_Standard) 
 3. [Bioschema](https://bioschemas.org/) 
-4. [MOD-CO](https://academic.oup.com/database/article/doi/10.1093/database/baz002/53039720)
+4. [MOD-CO](https://doi.org/10.1093/database/baz002)
 
 >With the advent of advanced molecular meta-omics techniques and methods, a new era commenced for analysing and characterizing historic collection specimens, as well as recently collected environmental samples. Nucleic acid and protein sequencing-based analyses are increasingly applied to determine the origin, identity and traits of environmental (biological) objects and organisms. In this context, the need for new data structures is evident and former approaches for data processing need to be expanded according to the new meta-omics techniques and operational standards. Existing schemas and community standards in the biodiversity and molecular domain concentrate on terms important for data exchange and publication. Detailed operational aspects of origin and laboratory as well as object and data management issues are frequently neglected. Meta-omics Data and Collection Objects (MOD-CO) has therefore been set up as a new schema for meta-omics research, with a hierarchical organization of the concepts describing collection samples, as well as products and data objects being generated during operational workflows. 
-https://academic.oup.com/database/article/doi/10.1093/database/baz002/5303972
+
 
 
 # Workflow 
-- From field collection event to specimen accession and long term storage 
-- Researchers out in the field
-- Institution (museum collection managers) 
+- From field collection event to specimen accession to long term storage 
+- Institution (museum collection managers) specific workflow. 
+- When does the life of a specimen begin? Always at the point of formal 
+accession to one of the collections? When it becomes trackable via an internal-persistent-identifer? 
 - Usually specimens are not collected with the primary intent of DNA analysis
+ 
 
 [Species delimitation in the morphologically conserved Coecobrya (Collembola: Entomobryidae): A case study integrating morphology and molecular traits to advance current taxonomy](https://onlinelibrary.wiley.com/doi/full/10.1111/zsc.12279) - has a good example of workflow 
 
 >For Collembola, morphological and molecular characters are the most frequently used; other types of data, such as ecology, reproductive compatibility, behaviour, cytogenetics, cuticular compounds, enzymes, whole genome scans, can provide complementary evidence. Multiple types of data can be reconciled under the unified species concept GLC (de Queiroz, 2007). The operational workflow for Collembola can be modified from Yeates et al.'s “iterative taxonomy” (2011), continuously testing species hypotheses with new sources of data
+>
+- [EBI submission guideline for taxon name](https://www.ebi.ac.uk/ena/submit/taxonomy)
 
-https://www.ebi.ac.uk/ena/submit/taxonomy
+# Use Cases / User stories 
 
-# Use Cases/ User stories 
-
-- Need user stories to understand the requirements. 
+- We need user stories to understand the requirements. 
+- We identified 15 [user stories](https://github.com/DiSSCo/dissco-elixir/issues) from a previous [ICEDIG](https://www.icedig.eu/) survey. 
 
 # Recent Papers 
+
+- [Review and Interpretation of Trends in DNA Barcoding](https://www.frontiersin.org/articles/10.3389/fevo.2019.00302/full), September, 2019
+>Interpretations and analytical practices surrounding DNA barcoding are examined using a compilation of 3,756 papers (as of December 31, 2018) with “DNA Barcode” in the abstract published since 2004. By examining the rise of DNA barcoding in natural history and biodiversity science over this period, we hope to detect the extent to which its purposes, premises, rationale and application have evolved. 
+>
 
 - [Parasites Lost: using natural history collections to track disease change across deep time](https://doi.org/10.1002/fee.2017), March, 2019
 
