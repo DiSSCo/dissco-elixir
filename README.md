@@ -43,7 +43,7 @@ Is it a plant or a wasp?
 
 Taxonomic research is still one of the most important aspects of species identification. Museum and herbarium specimens are important source for such identification process and also for individual level trait measurement through time. We now have billions of specimens available but not all of them are digitized. A vast amount of trait data are available but linking and integrating remain a [challenge](https://doi.org/10.1101/328302). 
 
-Furthermore, taxonomic identificaiton is a slow process. On the other hand DNA sequencing (some methods can be expensive) is one of the fastest ways of gathering evidence for taxonomic decision -- for example incorporating DNA evidence into [taxonomic decisions](https://doi.org/10.13156/arac.2018.18.2.94) 
+Furthermore, taxonomic identification is a slow process. On the other hand DNA sequencing (some methods can be expensive) is one of the fastest ways of gathering evidence for taxonomic decision -- for example incorporating DNA evidence into [taxonomic decisions](https://doi.org/10.13156/arac.2018.18.2.94) 
 [via DNA barcodes](https://dx.doi.org/10.3897%2Fzookeys.757.24453). But this approach is also prone to errors -- several papers (for example ([here](https://doi.org/10.1007/s13225-019-00428-3) and [here](https://doi.org/10.1046/j.1469-8137.2003.00894.x)) highlighted errors in sequence based identification. Researchers are also looking into multiple sources: morphological, ecological and molecular and [integrated](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2657783/) approaches. 
 
 
@@ -54,7 +54,7 @@ In essence we are dealing with heterogeneous data sources, formats, different wo
 [Figure]([http://doi.org/10.1515/dna-2015-0006) by Hubert, Nicolas, and Robert Hanner.
 	
 
-This [2015 publication](https://doi.org/10.1093/nar/gku1127) highlights various aspect of data storage, workflow, institutional involvement and most importantly FAIR aspect of data life cycle. 
+This [2015 publication](https://doi.org/10.1093/nar/gku1127) highlights various aspects of data storage, workflow, institutional involvement and most importantly FAIR aspect of data life cycle. 
 
 
 >GenBank is an archive of sequence data, particularly important for sequences associated with publications in the scientific literature. In this case the GenBank entries serve as supplementary material to the publication, and are ‘owned’ by the submitter/author. In this role, it is vital to preserve the original data so that the analysis from the paper can be evaluated and replicated. GenBank also serves as the general reference set of sequence data for current research in biology. There is a tension between these two goals. We try to keep sequences and metadata current, and archive versions of every update to the sequence entries to support the archival requirement. We update the taxonomy with respect to synonymy, but rely on the submitters for the correct original taxonomic identification of their specimens and for the appropriate annotation of their source material (in isolate, strain, culture-collection and specimen-voucher qualifiers). This means that there are misidentified sequences in GenBank, and entries with other annotation problems. It is important to have these corrected (or flagged as problematic) to support the reference database requirement. Third-party updates are passed along to the original submitters but are not implemented in GenBank without the submitters’ permission; entries with egregious errors may be suppressed or flagged as ‘unverified’. Sequence from type can help to alleviate these problems by providing a backbone of reliably identified sequence data. 
@@ -85,7 +85,7 @@ Above issues can be categorised in the following themes:
 
 ## Data Landscape 
 
-Buildig the [DiSSCo knowledge graph](https://alexhardisty.wordpress.com/2019/07/25/building-the-dissco-knowledge-graph/) (by Alex Hardisty)
+Building the [DiSSCo knowledge graph](https://alexhardisty.wordpress.com/2019/07/25/building-the-dissco-knowledge-graph/) (by Alex Hardisty)
 
 The (digital) fate of a small marine worm (based on the above knowledge graph). 
 
